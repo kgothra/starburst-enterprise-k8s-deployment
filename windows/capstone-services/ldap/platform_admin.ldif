@@ -1,0 +1,12 @@
+# platform_admin, example.com
+dn: uid=platform_admin,dc=example,dc=com
+changetype: add
+uid: alice
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: platform_admin
+sn: platform_admin
+mail: platform_admin@example.com
+userPassword: trinoRocks15

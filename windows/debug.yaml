@@ -1,0 +1,683 @@
+level=DEBUG msg="Original chart version" version=453.4.0
+level=DEBUG msg="set up default downloader cache"
+level=DEBUG msg="attempting to download chart" ref=oci://harbor.starburstdata.net/starburstdata/charts/starburst-enterprise version=453.4.0
+level=DEBUG msg=GET id=0 url=https://harbor.starburstdata.net/v2/starburstdata/charts/starburst-enterprise/manifests/453.4.0 header="   \"Accept\": \"application/vnd.docker.distribution.manifest.v2+json, application/vnd.docker.distribution.manifest.list.v2+json, application/vnd.oci.image.manifest.v1+json, application/vnd.oci.image.index.v1+json, application/vnd.oci.artifact.manifest.v1+json\"\n   \"User-Agent\": \"Helm/4.1.0\""
+level=DEBUG msg=Res id=0 status="401 Unauthorized" header="   \"Set-Cookie\": \"*****\"\n   \"Www-Authenticate\": \"Bearer realm=\\\"https://harbor.starburstdata.net/service/token\\\",service=\\\"harbor-registry\\\",scope=\\\"repository:starburstdata/charts/starburst-enterprise:pull\\\"\"\n   \"X-Request-Id\": \"a5cdfccff6e2f65e0da63fef5372ca38\"\n   \"Strict-Transport-Security\": \"max-age=31536000; includeSubDomains\"\n   \"Date\": \"Wed, 25 Mar 2026 19:14:15 GMT\"\n   \"Content-Type\": \"application/json; charset=utf-8\"\n   \"Content-Length\": \"152\"\n   \"Docker-Distribution-Api-Version\": \"registry/2.0\"" body="{\"errors\":[{\"code\":\"UNAUTHORIZED\",\"message\":\"authorize header needed to send HEAD to repository: authorize header needed to send HEAD to repository\"}]}\n"
+level=DEBUG msg=GET id=1 url="https://harbor.starburstdata.net/service/token?scope=repository%3Astarburstdata%2Fcharts%2Fstarburst-enterprise%3Apull&service=harbor-registry" header="   \"Authorization\": \"*****\"\n   \"User-Agent\": \"Helm/4.1.0\""
+level=DEBUG msg=Res id=1 status="200 OK" header="   \"Set-Cookie\": \"*****\"\n   \"X-Request-Id\": \"d6b7a33335d6e1aa7a470c67a561b8d2\"\n   \"Strict-Transport-Security\": \"max-age=31536000; includeSubDomains\"\n   \"Date\": \"Wed, 25 Mar 2026 19:14:15 GMT\"\n   \"Content-Type\": \"application/json; charset=utf-8\"" body="   Response body redacted due to potential credentials"
+level=DEBUG msg=GET id=2 url=https://harbor.starburstdata.net/v2/starburstdata/charts/starburst-enterprise/manifests/453.4.0 header="   \"Authorization\": \"*****\"\n   \"User-Agent\": \"Helm/4.1.0\"\n   \"Accept\": \"application/vnd.docker.distribution.manifest.v2+json, application/vnd.docker.distribution.manifest.list.v2+json, application/vnd.oci.image.manifest.v1+json, application/vnd.oci.image.index.v1+json, application/vnd.oci.artifact.manifest.v1+json\""
+level=DEBUG msg=Res id=2 status="200 OK" header="   \"Docker-Content-Digest\": \"sha256:75d63505fd043a817dee728f4516c43435181c4d6b07a1de87a0ff108ab35f12\"\n   \"Etag\": \"\\\"sha256:75d63505fd043a817dee728f4516c43435181c4d6b07a1de87a0ff108ab35f12\\\"\"\n   \"Set-Cookie\": \"*****\"\n   \"Content-Length\": \"608\"\n   \"Docker-Distribution-Api-Version\": \"registry/2.0\"\n   \"X-Request-Id\": \"4a130f449f44eb87a83018d7edb55d8b\"\n   \"Strict-Transport-Security\": \"max-age=31536000; includeSubDomains\"\n   \"Date\": \"Wed, 25 Mar 2026 19:14:15 GMT\"\n   \"Content-Type\": \"application/vnd.oci.image.manifest.v1+json\"" body="{\"schemaVersion\":2,\"config\":{\"mediaType\":\"application/vnd.cncf.helm.config.v1+json\",\"digest\":\"sha256:6c7a77301b2f3d081243dea6fcf231380a6224d003fe1b9df9f5e48ed3a0e17c\",\"size\":272},\"layers\":[{\"mediaType\":\"application/vnd.cncf.helm.chart.content.v1.tar+gzip\",\"digest\":\"sha256:59902ca2524746e91cc8e00c6aff61b2b10b731840f1f0bbf462fa83129eb432\",\"size\":22050}],\"annotations\":{\"org.opencontainers.image.created\":\"2024-10-17T09:01:09Z\",\"org.opencontainers.image.description\":\"A Helm chart for Starburst Enterprise\",\"org.opencontainers.image.title\":\"starburst-enterprise\",\"org.opencontainers.image.version\":\"453.4.0\"}}"
+level=DEBUG msg=GET id=3 url=https://harbor.starburstdata.net/v2/starburstdata/charts/starburst-enterprise/blobs/sha256:59902ca2524746e91cc8e00c6aff61b2b10b731840f1f0bbf462fa83129eb432 header="   \"Authorization\": \"*****\"\n   \"User-Agent\": \"Helm/4.1.0\""
+level=DEBUG msg=GET id=4 url=https://harbor.starburstdata.net/v2/starburstdata/charts/starburst-enterprise/blobs/sha256:6c7a77301b2f3d081243dea6fcf231380a6224d003fe1b9df9f5e48ed3a0e17c header="   \"Authorization\": \"*****\"\n   \"User-Agent\": \"Helm/4.1.0\""
+level=DEBUG msg=Res id=4 status="200 OK" header="   \"Accept-Ranges\": \"bytes\"\n   \"Cache-Control\": \"max-age=31536000\"\n   \"Docker-Content-Digest\": \"sha256:6c7a77301b2f3d081243dea6fcf231380a6224d003fe1b9df9f5e48ed3a0e17c\"\n   \"Docker-Distribution-Api-Version\": \"registry/2.0\"\n   \"Etag\": \"\\\"sha256:6c7a77301b2f3d081243dea6fcf231380a6224d003fe1b9df9f5e48ed3a0e17c\\\"\"\n   \"Strict-Transport-Security\": \"max-age=31536000; includeSubDomains\"\n   \"Date\": \"Wed, 25 Mar 2026 19:14:15 GMT\"\n   \"Content-Type\": \"application/octet-stream\"\n   \"Content-Length\": \"272\"\n   \"Set-Cookie\": \"*****\"\n   \"X-Request-Id\": \"f68ba02944512b0fd22950a1a344a38a\"" body="   Response body of content type \"application/octet-stream\" is not printed"
+level=DEBUG msg=Res id=3 status="200 OK" header="   \"Docker-Content-Digest\": \"sha256:59902ca2524746e91cc8e00c6aff61b2b10b731840f1f0bbf462fa83129eb432\"\n   \"Docker-Distribution-Api-Version\": \"registry/2.0\"\n   \"Etag\": \"\\\"sha256:59902ca2524746e91cc8e00c6aff61b2b10b731840f1f0bbf462fa83129eb432\\\"\"\n   \"Set-Cookie\": \"*****\"\n   \"Date\": \"Wed, 25 Mar 2026 19:14:15 GMT\"\n   \"X-Request-Id\": \"c54407bd29b810ff5a4cc15bce956e2b\"\n   \"Strict-Transport-Security\": \"max-age=31536000; includeSubDomains\"\n   \"Content-Type\": \"application/octet-stream\"\n   \"Content-Length\": \"22050\"\n   \"Accept-Ranges\": \"bytes\"\n   \"Cache-Control\": \"max-age=31536000\"" body="   Response body of content type \"application/octet-stream\" is not printed"
+Pulled: harbor.starburstdata.net/starburstdata/charts/starburst-enterprise:453.4.0
+Digest: sha256:75d63505fd043a817dee728f4516c43435181c4d6b07a1de87a0ff108ab35f12
+level=DEBUG msg="put downloaded chart in cache" id=59902ca2524746e91cc8e00c6aff61b2b10b731840f1f0bbf462fa83129eb432
+level=DEBUG msg="Chart path" path=C:\Users\KARANB~1\AppData\Local\Temp\helm\content\59\59902ca2524746e91cc8e00c6aff61b2b10b731840f1f0bbf462fa83129eb432.chart
+level=DEBUG msg="number of dependencies in the chart" chart=starburst-enterprise dependencies=1
+level=DEBUG msg="number of dependencies in the chart" chart=starburst-charts-common dependencies=0
+---
+# Source: starburst-enterprise/templates/workers/prometheus-configmap.yaml
+
+# ------------------------------------------------------------------------------
+# Workers Prometheus
+# ------------------------------------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: starburst-worker-p8s
+  labels:
+    name: starburst-worker-p8s
+data:
+  prometheus.yaml: |
+    rules:
+      - attrNameSnakeCase: true
+        name: $1
+        pattern: trino.execution<name=QueryManager><>(running_queries|queued_queries)
+        type: GAUGE
+      - name: failed_queries
+        pattern: trino.execution<name=QueryManager><>FailedQueries\.TotalCount
+        type: COUNTER
+
+---
+# Source: starburst-enterprise/templates/coordinator/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coordinator
+  labels:
+    role: coordinator
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: coordinator
+      app: starburst-enterprise
+      helm-release: sep
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        role: coordinator
+        app: starburst-enterprise
+        helm-release: sep
+        helm-chart: starburst-enterprise-453.4.0
+        managed-by: Helm
+      annotations:
+        
+        checksum/coordinator-values: b6915a074249d32bd7e6a7553a4fd8ed43e960b3a97c5e7da1694b9b22b28a67
+        checksum/pullsecret: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+    spec:
+      # This has to be in sync as we can't kill coordinator earlier that workers.
+      terminationGracePeriodSeconds: 1
+      imagePullSecrets:
+        - name: registry-credentials
+      hostAliases:
+        null
+      initContainers:
+        - name: starburst-enterprise-init
+          image: "harbor.starburstdata.net/starburstdata/starburst-enterprise-init:1.5.14"
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 0.5
+            limits:
+              memory: 2Gi
+              cpu: 1
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          volumeMounts:
+            - name: starburst-config
+              mountPath: /work-dir
+            - name: starburst-config-updated
+              mountPath: /etc/starburst
+            - name: starburst-license-json
+              mountPath: /starburst-license-json
+          command:
+            - starburst-conf-cli
+            - generate
+            - --values-yaml
+            - /work-dir/values.yaml
+            - --config-type
+            - COORDINATOR
+            - --starburst-config-dir
+            - /etc/starburst
+            - --starburst-license-dir
+            - /starburst-license-json
+            - --ip
+            - $(POD_IP)
+            - --k8s-namespace
+            - $(POD_NAMESPACE)
+            - --chart-version
+            - 453.4.0
+        
+        - name: cert-manager
+          command:
+          - bash
+          - -c
+          - /mnt/shared/fetch-certs.sh
+          image: quay.io/centos/centos:stream9
+          volumeMounts:  
+          - name: additional-volume-0
+            mountPath: /etc/starburst/groups.txt
+            subPath: groups.txt
+          - name: additional-volume-1
+            mountPath: /mnt/shared
+          - name: additional-volume-2
+            mountPath: /mnt/shared/fetch-certs.sh
+            subPath: fetch-certs.sh
+          - name: additional-volume-3
+            mountPath: 
+          - mountPath: /etc/starburst/certs
+            name: truststore-volume
+          - mountPath: /mnt/shared
+            name: fetch-certs
+      containers:
+        - name: coordinator
+          image: "harbor.starburstdata.net/starburstdata/starburst-enterprise:453-e.4"
+          imagePullPolicy: IfNotPresent
+          command: [ "/bin/bash" ]
+          args:
+            - "/initFile"
+            - "coordinator"
+          startupProbe:
+            httpGet:
+              scheme: HTTP
+              path: /v1/readiness
+              port: 8080
+            timeoutSeconds: 30
+            periodSeconds: 30
+            failureThreshold: 20
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /v1/readiness
+              port: 8080
+            timeoutSeconds: 30
+            periodSeconds: 30
+            failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /v1/info
+              port: 8080
+            timeoutSeconds: 30
+            periodSeconds: 60
+            failureThreshold: 3
+          envFrom:
+            - secretRef:
+                name: sep-secrets
+            
+            
+          env:
+            - name: POD_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443
+          volumeMounts:
+            - name: init-file
+              mountPath: /initFile
+              subPath: initFile
+              readOnly: true
+            - name: starburst-config-updated
+              mountPath: /etc/starburst
+            - name: starburst-license-json
+              mountPath: /starburst-license-json
+            
+            
+            - name: prometheus-volume
+              mountPath: /etc/starburst/telemetry
+            
+            - name: additional-volume-0
+              mountPath: /etc/starburst/groups.txt
+              subPath: groups.txt
+            - name: additional-volume-1
+              mountPath: /mnt/shared
+            - name: additional-volume-2
+              mountPath: /mnt/shared/fetch-certs.sh
+              subPath: fetch-certs.sh
+            - name: additional-volume-3
+              mountPath: 
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 0.5
+            limits:
+              memory: 2Gi
+              cpu: 1
+          terminationMessagePolicy: FallbackToLogsOnError
+      volumes:
+        - name: init-file
+          secret:
+            secretName: init-secret-sep-starburst-enterprise
+        - name: starburst-config
+          secret:
+            secretName: values-yaml-secret
+        - name: starburst-license-json
+          secret:
+            secretName: sep-license
+        - name: starburst-config-updated
+          emptyDir: {}
+        
+        
+        - name: prometheus-volume
+          configMap:
+            name: starburst-coordinator-p8s
+        
+        - name: additional-volume-0
+          configMap:
+            name: sep-groups
+        - name: additional-volume-1
+          emptyDir: {}
+        - name: additional-volume-2
+          configMap:
+            defaultMode: 511
+            name: fetch-certs
+        - name: additional-volume-3
+          null
+
+---
+# Source: starburst-enterprise/templates/coordinator/prometheus-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-coordinator-sep
+  labels:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: prometheus-coordinator
+spec:
+  selector:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: coordinator
+  ports:
+    - name: metrics
+      protocol: TCP
+      port: 8081
+  type: ClusterIP
+
+---
+# Source: starburst-enterprise/templates/workers/service.yaml
+# ------------------------------------------------------------------------------
+# Worker Headless Service
+#
+# Used only for internal communication. Required for SAN wildcard entries in TLS certs.
+# ------------------------------------------------------------------------------
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: worker
+  labels:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: worker
+    headless: "true"
+spec:
+  clusterIP: None
+  type: ClusterIP
+  publishNotReadyAddresses: true
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+    - name: https
+      port: 8443
+      protocol: TCP
+  selector:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: worker
+
+---
+# Source: starburst-enterprise/templates/workers/prometheus-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-worker-sep
+  labels:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: prometheus-worker
+spec:
+  selector:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: worker
+  ports:
+    - name: metrics
+      protocol: TCP
+      port: 8081
+  type: ClusterIP
+
+---
+# Source: starburst-enterprise/templates/coordinator/service.yaml
+# ------------------------------------------------------------------------------
+# Coordinator Headless Service
+#
+# Used only for internal communication. Required for SAN entries in TLS certs.
+# ------------------------------------------------------------------------------
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: coordinator
+  labels:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: coordinator
+    headless: "true"
+spec:
+  clusterIP: None
+  type: ClusterIP
+  publishNotReadyAddresses: true
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+    - name: https
+      port: 8443
+      protocol: TCP
+  selector:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: coordinator
+
+---
+# Source: starburst-enterprise/templates/configuration/secret.yaml
+# ------------------------------------------------------------------------------
+# Coordinator Configuration
+# ------------------------------------------------------------------------------
+apiVersion: v1
+kind: Secret
+metadata:
+  name: values-yaml-secret
+  labels:
+    name: values-yaml-secret
+data:
+  values.yaml: YWRkaXRpb25hbFZvbHVtZXM6Ci0gcGF0aDogL2V0Yy9zdGFyYnVyc3QvZ3JvdXBzLnR4dAogIHN1YlBhdGg6IGdyb3Vwcy50eHQKICB2b2x1bWU6CiAgICBjb25maWdNYXA6CiAgICAgIG5hbWU6IHNlcC1ncm91cHMKLSBwYXRoOiAvbW50L3NoYXJlZAogIHZvbHVtZToKICAgIGVtcHR5RGlyOiB7fQotIHBhdGg6IC9tbnQvc2hhcmVkL2ZldGNoLWNlcnRzLnNoCiAgc3ViUGF0aDogZmV0Y2gtY2VydHMuc2gKICB2b2x1bWU6CiAgICBjb25maWdNYXA6CiAgICAgIGRlZmF1bHRNb2RlOiA1MTEKICAgICAgbmFtZTogZmV0Y2gtY2VydHMKY2FjaGU6CiAgZGlza1VzYWdlUGVyY2VudGFnZTogODAKICBlbmFibGVkOiBmYWxzZQogIHR0bDogN2QKICB2b2x1bWU6CiAgICBlbXB0eURpcjoge30KY2F0YWxvZ3M6CiAgaW5zaWdodHM6IHwtCiAgICBjb25uZWN0b3IubmFtZT1wb3N0Z3Jlc3FsCiAgICBjb25uZWN0aW9uLXVybD1qZGJjOnBvc3RncmVzcWw6Ly9ob3N0LmRvY2tlci5pbnRlcm5hbDo1NDMyL2luc2lnaHRzCiAgICBjb25uZWN0aW9uLXVzZXI9JHtFTlY6SU5TSUdIVFNfVVNSfQogICAgY29ubmVjdGlvbi1wYXNzd29yZD0ke0VOVjpJTlNJR0hUU19QU1dEfQogIHRwY2g6IHwtCiAgICBjb25uZWN0b3IubmFtZT10cGNoCiAgICB0cGNoLnNwbGl0cy1wZXItbm9kZT00CmNvbW1vbkxhYmVsczoge30KY29vcmRpbmF0b3I6CiAgYWRkaXRpb25hbEV4cG9zZWRQb3J0czoge30KICBhZGRpdGlvbmFsSnZtQ29uZmlnOiAtRGphdmEuc2VjdXJpdHkucHJvcGVydGllcz0vdG1wL2phdmEuc2VjdXJpdHkub3ZlcnJpZGUKICBhZGRpdGlvbmFsUHJvcGVydGllczogIiIKICBhZGRpdGlvbmFsVm9sdW1lTW91bnRzOgogIC0gbW91bnRQYXRoOiAvZXRjL3N0YXJidXJzdC9jZXJ0cwogICAgbmFtZTogdHJ1c3RzdG9yZS12b2x1bWUKICBhZGRpdGlvbmFsVm9sdW1lczoKICAtIGVtcHR5RGlyOiB7fQogICAgbmFtZTogdHJ1c3RzdG9yZS12b2x1bWUKICBhZmZpbml0eToge30KICBkZXBsb3ltZW50QW5ub3RhdGlvbnM6IHt9CiAgZW52RnJvbToKICAtIHNlY3JldFJlZjoKICAgICAgbmFtZTogc2VwLXNlY3JldHMKICBldGNGaWxlczoKICAgIGp2bS5jb25maWc6IHwKICAgICAgLXNlcnZlcgogICAgICAtWFg6RzFIZWFwUmVnaW9uU2l6ZT0zMk0KICAgICAgLVhYOitFeHBsaWNpdEdDSW52b2tlc0NvbmN1cnJlbnQKICAgICAgLVhYOitIZWFwRHVtcE9uT3V0T2ZNZW1vcnlFcnJvcgogICAgICAtWFg6LU9taXRTdGFja1RyYWNlSW5GYXN0VGhyb3cKICAgICAgLVhYOlJlc2VydmVkQ29kZUNhY2hlU2l6ZT01MTJNCiAgICAgIC1YWDpQZXJNZXRob2RSZWNvbXBpbGF0aW9uQ3V0b2ZmPTEwMDAwCiAgICAgIC1YWDpQZXJCeXRlY29kZVJlY29tcGlsYXRpb25DdXRvZmY9MTAwMDAKICAgICAgLURqZGsuYXR0YWNoLmFsbG93QXR0YWNoU2VsZj10cnVlCiAgICAgIC1EamRrLm5pby5tYXhDYWNoZWRCdWZmZXJTaXplPTIwMDAwMDAKICAgICAgLURmaWxlLmVuY29kaW5nPVVURi04CiAgICAgIC0tYWRkLW9wZW5zPWphdmEuYmFzZS9zdW4ubmlvLmNoPUFMTC1VTk5BTUVECiAgICAgIC0tYWRkLW9wZW5zPWphdmEuYmFzZS9qYXZhLm5pbz1BTEwtVU5OQU1FRAogICAgICAtLWFkZC1vcGVucz1qYXZhLmJhc2UvamF2YS5sYW5nPUFMTC1VTk5BTUVECiAgICAgIC0tYWRkLW9wZW5zPWphdmEuc2VjdXJpdHkuamdzcy9zdW4uc2VjdXJpdHkua3JiNT1BTEwtVU5OQU1FRAogICAgICAtWFg6K1VzZUcxR0MKICAgICAgLWFnZW50cGF0aDovdXNyL2xpYi9zdGFyYnVyc3QvYmluL2xpYmp2bWtpbGwuc28KICAgICAgLVhYOitVbmxvY2tEaWFnbm9zdGljVk1PcHRpb25zCiAgICAgIC1YWDpHMU51bUNvbGxlY3Rpb25zS2VlcFBpbm5lZD0xMDAwMDAwMAogICAgICAtRGpkay5hdHRhY2guYWxsb3dBdHRhY2hTZWxmPXRydWUKICAgICAgLVhYOitVc2VBRVNDVFJJbnRyaW5zaWNzCiAgICAgIC1YWDpHQ0xvY2tlclJldHJ5QWxsb2NhdGlvbkNvdW50PTEwMAogICAgb3RoZXI6IHt9CiAgICBwcm9wZXJ0aWVzOgogICAgICBjb25maWcucHJvcGVydGllczogfC0KICAgICAgICBjb29yZGluYXRvcj10cnVlCiAgICAgICAgbm9kZS1zY2hlZHVsZXIuaW5jbHVkZS1jb29yZGluYXRvcj1mYWxzZQogICAgICAgIGh0dHAtc2VydmVyLmh0dHAucG9ydD04MDgwCiAgICAgICAgZGlzY292ZXJ5LnVyaT1odHRwOi8vbG9jYWxob3N0OjgwODAKICAgICAgICBkaXNjb3Zlcnktc2VydmVyLmVuYWJsZWQ9dHJ1ZQoKICAgICAgICAjIFRMUy9BdXRoZW50aWNhdGlvbgogICAgICAgIGh0dHAtc2VydmVyLmF1dGhlbnRpY2F0aW9uLnR5cGU9UEFTU1dPUkQKICAgICAgICBodHRwLXNlcnZlci5odHRwcy5lbmFibGVkPXRydWUKICAgICAgICBodHRwLXNlcnZlci5odHRwcy5wb3J0PTg0NDMKICAgICAgICBodHRwLXNlcnZlci5odHRwcy5rZXlzdG9yZS5wYXRoPS9ldGMvc3RhcmJ1cnN0L2NlcnRzL2tleXN0b3JlLmprcwogICAgICAgIGh0dHAtc2VydmVyLmh0dHBzLmtleXN0b3JlLmtleT0ke0VOVjpLRVlTVE9SRV9QU1dEfQoKICAgICAgICAjIEFjY2VzcyBjb250cm9sCiAgICAgICAgc3RhcmJ1cnN0LmFjY2Vzcy1jb250cm9sLmVuYWJsZWQ9dHJ1ZQogICAgICAgIGFjY2Vzcy1jb250cm9sLmNvbmZpZy1maWxlcz0vZXRjL3N0YXJidXJzdC9ndWFyZC5wcm9wZXJ0aWVzCiAgICAgICAgc3RhcmJ1cnN0LmFjY2Vzcy1jb250cm9sLmF1dGhvcml6ZWQtZ3JvdXBzPWFkbWluCgogICAgICAgICMgSW5zaWdodHMKICAgICAgICBpbnNpZ2h0cy5wZXJzaXN0ZW5jZS1lbmFibGVkPXRydWUKICAgICAgICBpbnNpZ2h0cy5tZXRyaWNzLXBlcnNpc3RlbmNlLWVuYWJsZWQ9dHJ1ZQogICAgICAgIGluc2lnaHRzLmpkYmMudXJsPWpkYmM6cG9zdGdyZXNxbDovL2luc2lnaHRzZGI6NTQzMi9pbnNpZ2h0cwogICAgICAgIGluc2lnaHRzLmpkYmMudXNlcj0ke0VOVjpJTlNJR0hUU19VU1J9CiAgICAgICAgaW5zaWdodHMuamRiYy5wYXNzd29yZD0ke0VOVjpJTlNJR0hUU19QU1dEfQogICAgICBncm91cC1wcm92aWRlci5wcm9wZXJ0aWVzOiB8LQogICAgICAgIGdyb3VwLXByb3ZpZGVyLm5hbWU9ZmlsZQogICAgICAgIGZpbGUuZ3JvdXAtZmlsZT0vZXRjL3N0YXJidXJzdC9ncm91cHMudHh0CiAgICAgIGdyb3Vwcy50eHQ6IHwtCiAgICAgICAgYWRtaW46YWRtaW4KICAgICAgICBwbGF0Zm9ybV9hZG1pbjphZG1pbgogICAgICAgIGFhcm9uOmFuYWx5dGljcwogICAgICAgIGplZmY6YW5hbHl0aWNzCiAgICAgICAgam9lOmFuYWx5dGljcwogICAgICAgIGp1bGlhbjphbmFseXRpY3MKICAgICAgICBsdWtlOmFuYWx5dGljcwogICAgICBndWFyZC5wcm9wZXJ0aWVzOiB8LQogICAgICAgIGFjY2Vzcy1jb250cm9sLm5hbWU9c3RhcmJ1cnN0CiAgICAgICAgZ3JvdXA9YWRtaW4KICAgICAgICBjYXRhbG9nPS4qCiAgICAgICAgcHJpdmlsZWdlcz1BTEwKCiAgICAgICAgZ3JvdXA9YW5hbHl0aWNzCiAgICAgICAgY2F0YWxvZz1pbnNpZ2h0cwogICAgICAgIHByaXZpbGVnZXM9U0VMRUNUCiAgICAgIGxvZy5wcm9wZXJ0aWVzOiB8LQogICAgICAgIGlvLnRyaW5vPUlORk8KICAgICAgICBpby50cmluby5wbHVnaW4ucGFzc3dvcmQubGRhcD1ERUJVRwogICAgICAgIGlvLnRyaW5vLnNlcnZlci5zZWN1cml0eT1ERUJVRwogICAgICBub2RlLnByb3BlcnRpZXM6IHwKICAgICAgICBub2RlLmVudmlyb25tZW50PWRldgogICAgICAgIG5vZGUuZGF0YS1kaXI9L2RhdGEvc3RhcmJ1cnN0CiAgICAgICAgcGx1Z2luLmRpcj0vdXNyL2xpYi9zdGFyYnVyc3QvcGx1Z2luCiAgICAgICAgbm9kZS5zZXJ2ZXItbG9nLWZpbGU9L3Zhci9sb2cvc3RhcmJ1cnN0L3NlcnZlci5sb2cKICAgICAgICBub2RlLmxhdW5jaGVyLWxvZy1maWxlPS92YXIvbG9nL3N0YXJidXJzdC9sYXVuY2hlci5sb2cKICAgICAgcGFzc3dvcmQtYXV0aGVudGljYXRvci5wcm9wZXJ0aWVzOiB8LQogICAgICAgIHBhc3N3b3JkLWF1dGhlbnRpY2F0b3IubmFtZT1sZGFwCiAgICAgICAgbGRhcC51cmw9bGRhcHM6Ly9ob3N0LmRvY2tlci5pbnRlcm5hbDo2MzYKICAgICAgICBsZGFwLmFsbG93LWluc2VjdXJlPWZhbHNlCiAgICAgICAgbGRhcC51c2VyLWJpbmQtcGF0dGVybj11aWQ9JHtVU0VSfSxkYz1leGFtcGxlLGRjPWNvbQogICAgICAgIGxkYXAuc3NsLnRydXN0c3RvcmUucGF0aD0vZXRjL3N0YXJidXJzdC9jZXJ0cy9rZXlzdG9yZS5qa3MKICAgICAgICBsZGFwLnNzbC50cnVzdHN0b3JlLnBhc3N3b3JkPSR7RU5WOktFWVNUT1JFX1BTV0R9CiAgaGVhcEhlYWRyb29tUGVyY2VudGFnZTogMzAKICBoZWFwU2l6ZVBlcmNlbnRhZ2U6IDkwCiAgaW5pdENvbnRhaW5lcnM6CiAgLSBjb21tYW5kOgogICAgLSBiYXNoCiAgICAtIC1jCiAgICAtIC9tbnQvc2hhcmVkL2ZldGNoLWNlcnRzLnNoCiAgICBpbWFnZTogcXVheS5pby9jZW50b3MvY2VudG9zOnN0cmVhbTkKICBub2RlTWVtb3J5SGVhZHJvb206IDI1Nk1pCiAgbm9kZVNlbGVjdG9yOiB7fQogIHBvZEFubm90YXRpb25zOiB7fQogIHByaW9yaXR5Q2xhc3NOYW1lOiBudWxsCiAgcmVzb3VyY2VzOgogICAgY3B1OiAxNgogICAgbGltaXRzOgogICAgICBjcHU6ICIxIgogICAgICBtZW1vcnk6IDJHaQogICAgbWVtb3J5OiA2MEdpCiAgICByZXF1ZXN0czoKICAgICAgY3B1OiAiMC41IgogICAgICBtZW1vcnk6IDFHaQogIHNlY3VyaXR5Q29udGV4dDoge30KICBzaWRlY2FyczogW10KICB0b2xlcmF0aW9uczogW10KZW52aXJvbm1lbnQ6IGRldgpleHBvc2U6CiAgY2x1c3RlcklwOgogICAgbmFtZTogc3RhcmJ1cnN0CiAgICBwb3J0czoKICAgICAgaHR0cDoKICAgICAgICBwb3J0OiA4MDgwCiAgaW5ncmVzczoKICAgIGFubm90YXRpb25zOiB7fQogICAgaG9zdDogbnVsbAogICAgaW5ncmVzc0NsYXNzTmFtZTogbnVsbAogICAgaW5ncmVzc05hbWU6IGNvb3JkaW5hdG9yLWluZ3Jlc3MKICAgIHBhdGg6IC8KICAgIHBhdGhUeXBlOiBJbXBsZW1lbnRhdGlvblNwZWNpZmljCiAgICBzZXJ2aWNlTmFtZTogc3RhcmJ1cnN0CiAgICBzZXJ2aWNlUG9ydDogODA4MAogICAgdGxzOgogICAgICBlbmFibGVkOiB0cnVlCiAgICAgIHNlY3JldE5hbWU6IG51bGwKICBsb2FkQmFsYW5jZXI6CiAgICBJUDogIiIKICAgIGFubm90YXRpb25zOiB7fQogICAgbmFtZTogc3RhcmJ1cnN0CiAgICBwb3J0czoKICAgICAgaHR0cDoKICAgICAgICBwb3J0OiA4MDgwCiAgICBzb3VyY2VSYW5nZXM6IFtdCiAgbm9kZVBvcnQ6CiAgICBleHRyYUxhYmVsczoge30KICAgIG5hbWU6IHN0YXJidXJzdAogICAgcG9ydHM6CiAgICAgIGh0dHA6CiAgICAgICAgbm9kZVBvcnQ6IDMwMDgwCiAgICAgICAgcG9ydDogODA4MAogIHR5cGU6IGNsdXN0ZXJJcApleHRlcm5hbFNlY3JldHM6CiAgZW5hYmxlZDogZmFsc2UKICBlc286CiAgICByZWZyZXNoSW50ZXJ2YWw6IDFtCiAgICBzZWNyZXRTdG9yZVJlZjogbnVsbAogIHNlY3JldFByZWZpeDogZXh0ZXJuYWwwCiAgdHlwZTogZXNvCmV4dHJhQXJndW1lbnRzOiBbXQpleHRyYVNlY3JldDoKICBmaWxlOiBudWxsCiAgbmFtZTogbnVsbApob3N0QWxpYXNlczogbnVsbAppbWFnZToKICBwdWxsUG9saWN5OiBJZk5vdFByZXNlbnQKICByZXBvc2l0b3J5OiBoYXJib3Iuc3RhcmJ1cnN0ZGF0YS5uZXQvc3RhcmJ1cnN0ZGF0YS9zdGFyYnVyc3QtZW50ZXJwcmlzZQogIHRhZzogNDUzLWUuNAppbWFnZVB1bGxTZWNyZXRzOgotIG5hbWU6IHJlZ2lzdHJ5LWNyZWRlbnRpYWxzCmluaXRGaWxlOiB8CiAgIyEvYmluL2Jhc2gKICBzZXQgLWV1eG8gcGlwZWZhaWwKCiAgIyBzZWN1cml0eSBvdmVycmlkZSBmaWxlIGZvciBBdXJvcmEgREgga2V5cwogIGNhdCA8PEVPRiA+IC90bXAvamF2YS5zZWN1cml0eS5vdmVycmlkZQogIGpkay50bHMuZGlzYWJsZWRBbGdvcml0aG1zPVNTTHYzLCBUTFN2MSwgVExTdjEuMSwgUkM0LCBERVMsIE1ENXdpdGhSU0EsIERIIGtleVNpemUgPCAxMDI0LCBFQyBrZXlTaXplIDwyMjQsIGFub24sIE5VTEwsIGluY2x1ZGUgamRrLmRpc2FibGVkLm5hbWVkQ3VydmVzCiAgRU9GCgogIGlmIFsgIiR7MTotfSIgPT0gImNvb3JkaW5hdG9yIiBdOyB0aGVuCiAgZmkKICBlY2hvICJTdGFydGluZyBzdGFyYnVyc3QiCiAgZXhlYyAvdXNyL2xpYi9zdGFyYnVyc3QvYmluL3J1bi1zdGFyYnVyc3QKaW5pdEltYWdlOgogIHB1bGxQb2xpY3k6IElmTm90UHJlc2VudAogIHJlcG9zaXRvcnk6IGhhcmJvci5zdGFyYnVyc3RkYXRhLm5ldC9zdGFyYnVyc3RkYXRhL3N0YXJidXJzdC1lbnRlcnByaXNlLWluaXQKICB0YWc6IDEuNS4xNAppbnRlcm5hbDoKICBwb3J0czoKICAgIGh0dHA6CiAgICAgIHBvcnQ6IDgwODAKICAgIGh0dHBzOgogICAgICBwb3J0OiA4NDQzCmludGVybmFsVGxzOiBmYWxzZQpsaXZlbmVzc1Byb2JlOiBudWxsCnByb21ldGhldXM6CiAgYWdlbnQ6CiAgICBjb25maWc6IC9ldGMvc3RhcmJ1cnN0L3RlbGVtZXRyeS9wcm9tZXRoZXVzLnlhbWwKICAgIHBvcnQ6IDgwODEKICAgIHZlcnNpb246IDAuMjAuMAogIGVuYWJsZWQ6IHRydWUKICBydWxlczoKICAtIGF0dHJOYW1lU25ha2VDYXNlOiB0cnVlCiAgICBuYW1lOiAkMQogICAgcGF0dGVybjogdHJpbm8uZXhlY3V0aW9uPG5hbWU9UXVlcnlNYW5hZ2VyPjw+KHJ1bm5pbmdfcXVlcmllc3xxdWV1ZWRfcXVlcmllcykKICAgIHR5cGU6IEdBVUdFCiAgLSBuYW1lOiBmYWlsZWRfcXVlcmllcwogICAgcGF0dGVybjogdHJpbm8uZXhlY3V0aW9uPG5hbWU9UXVlcnlNYW5hZ2VyPjw+RmFpbGVkUXVlcmllc1wuVG90YWxDb3VudAogICAgdHlwZTogQ09VTlRFUgpxdWVyeToKICBtYXhDb25jdXJyZW50UXVlcmllczogMwpyZWFkaW5lc3NQcm9iZTogbnVsbApyZWdpc3RyeUNyZWRlbnRpYWxzOgogIGVuYWJsZWQ6IGZhbHNlCiAgcGFzc3dvcmQ6IG51bGwKICByZWdpc3RyeTogbnVsbAogIHVzZXJuYW1lOiBudWxsCnNlY3VyaXR5Q29udGV4dDoge30Kc2hhcmVkU2VjcmV0OiBhYmNkZWZnCnNwaWxsaW5nOgogIGVuYWJsZWQ6IGZhbHNlCiAgdm9sdW1lOgogICAgZW1wdHlEaXI6IHt9CnN0YXJidXJzdC1jaGFydHMtY29tbW9uOgogIGdsb2JhbDoge30Kc3RhcmJ1cnN0RW50ZXJwcmlzZUluaXQ6CiAgc2VjdXJpdHlDb250ZXh0OiB7fQpzdGFyYnVyc3RQbGF0Zm9ybUxpY2Vuc2U6IHNlcC1saWNlbnNlCnN0YXJ0dXBQcm9iZTogbnVsbAp1c2FnZU1ldHJpY3M6CiAgZW5hYmxlZDogZmFsc2UKICB1c2FnZUNsaWVudDoKICAgIGluaXRpYWxEZWxheTogMW0KICAgIGludGVydmFsOiAxbQp1c2VyRGF0YWJhc2U6CiAgZW5hYmxlZDogZmFsc2UKICB1c2VyczogW10Kd2FycFNwZWVkOgogIGFkZGl0aW9uYWxIZWFwU2l6ZVBlcmNlbnRhZ2U6IDE1CiAgYXV0b0NvbmZpZ3VyZTogZmFsc2UKICBlbmFibGVkOiBmYWxzZQogIGZpbGVTeXN0ZW06CiAgICBsb2NhbFN0b3JhZ2VNb3VudFBhdGg6IC9vcHQvZGF0YQogIGltYWdlOgogICAgcHVsbFBvbGljeTogSWZOb3RQcmVzZW50CiAgICByZXBvc2l0b3J5OiBoYXJib3Iuc3RhcmJ1cnN0ZGF0YS5uZXQvc3RhcmJ1cnN0ZGF0YS9zdGFyYnVyc3Qtd2FycHNwZWVkLWluaXQKICAgIHRhZzogMS4wLjE2CndvcmtlcjoKICBhZGRpdGlvbmFsRXhwb3NlZFBvcnRzOiB7fQogIGFkZGl0aW9uYWxKdm1Db25maWc6IC1EamF2YS5zZWN1cml0eS5wcm9wZXJ0aWVzPS90bXAvamF2YS5zZWN1cml0eS5vdmVycmlkZQogIGFkZGl0aW9uYWxQcm9wZXJ0aWVzOiAiIgogIGFkZGl0aW9uYWxWb2x1bWVNb3VudHM6CiAgLSBtb3VudFBhdGg6IC9ldGMvc3RhcmJ1cnN0L2NlcnRzCiAgICBuYW1lOiB0cnVzdHN0b3JlLXZvbHVtZQogIGFkZGl0aW9uYWxWb2x1bWVzOgogIC0gZW1wdHlEaXI6IHt9CiAgICBuYW1lOiB0cnVzdHN0b3JlLXZvbHVtZQogIGFmZmluaXR5OiB7fQogIGF1dG9zY2FsaW5nOgogICAgZW5hYmxlZDogZmFsc2UKICAgIG1heFJlcGxpY2FzOiAxMDAKICAgIG1pblJlcGxpY2FzOiAxCiAgICB0YXJnZXRDUFVVdGlsaXphdGlvblBlcmNlbnRhZ2U6IDgwCiAgY291bnQ6IDEKICBkZXBsb3ltZW50QW5ub3RhdGlvbnM6IHt9CiAgZGVwbG95bWVudFRlcm1pbmF0aW9uR3JhY2VQZXJpb2RTZWNvbmRzOiAxCiAgZW52RnJvbToKICAtIHNlY3JldFJlZjoKICAgICAgbmFtZTogc2VwLXNlY3JldHMKICBldGNGaWxlczoKICAgIGp2bS5jb25maWc6IHwKICAgICAgLXNlcnZlcgogICAgICAtWFg6RzFIZWFwUmVnaW9uU2l6ZT0zMk0KICAgICAgLVhYOitFeHBsaWNpdEdDSW52b2tlc0NvbmN1cnJlbnQKICAgICAgLVhYOitIZWFwRHVtcE9uT3V0T2ZNZW1vcnlFcnJvcgogICAgICAtWFg6LU9taXRTdGFja1RyYWNlSW5GYXN0VGhyb3cKICAgICAgLVhYOlJlc2VydmVkQ29kZUNhY2hlU2l6ZT01MTJNCiAgICAgIC1YWDpQZXJNZXRob2RSZWNvbXBpbGF0aW9uQ3V0b2ZmPTEwMDAwCiAgICAgIC1YWDpQZXJCeXRlY29kZVJlY29tcGlsYXRpb25DdXRvZmY9MTAwMDAKICAgICAgLURqZGsuYXR0YWNoLmFsbG93QXR0YWNoU2VsZj10cnVlCiAgICAgIC1EamRrLm5pby5tYXhDYWNoZWRCdWZmZXJTaXplPTIwMDAwMDAKICAgICAgLURmaWxlLmVuY29kaW5nPVVURi04CiAgICAgIC0tYWRkLW9wZW5zPWphdmEuYmFzZS9zdW4ubmlvLmNoPUFMTC1VTk5BTUVECiAgICAgIC0tYWRkLW9wZW5zPWphdmEuYmFzZS9qYXZhLm5pbz1BTEwtVU5OQU1FRAogICAgICAtLWFkZC1vcGVucz1qYXZhLmJhc2UvamF2YS5sYW5nPUFMTC1VTk5BTUVECiAgICAgIC0tYWRkLW9wZW5zPWphdmEuc2VjdXJpdHkuamdzcy9zdW4uc2VjdXJpdHkua3JiNT1BTEwtVU5OQU1FRAogICAgICAtWFg6K1VzZUcxR0MKICAgICAgLWFnZW50cGF0aDovdXNyL2xpYi9zdGFyYnVyc3QvYmluL2xpYmp2bWtpbGwuc28KICAgICAgLVhYOitVbmxvY2tEaWFnbm9zdGljVk1PcHRpb25zCiAgICAgIC1YWDpHMU51bUNvbGxlY3Rpb25zS2VlcFBpbm5lZD0xMDAwMDAwMAogICAgICAtRGpkay5hdHRhY2guYWxsb3dBdHRhY2hTZWxmPXRydWUKICAgICAgLVhYOitVc2VBRVNDVFJJbnRyaW5zaWNzCiAgICAgIC1YWDpHQ0xvY2tlclJldHJ5QWxsb2NhdGlvbkNvdW50PTEwMAogICAgb3RoZXI6IHt9CiAgICBwcm9wZXJ0aWVzOgogICAgICBjb25maWcucHJvcGVydGllczogfAogICAgICAgIGNvb3JkaW5hdG9yPWZhbHNlCiAgICAgICAgaHR0cC1zZXJ2ZXIuaHR0cC5wb3J0PTgwODAKICAgICAgICBkaXNjb3ZlcnkudXJpPWh0dHA6Ly9jb29yZGluYXRvcjo4MDgwCiAgICAgIGxvZy5wcm9wZXJ0aWVzOiB8CiAgICAgICAgIyBFbmFibGUgdmVyYm9zZSBsb2dnaW5nIGZyb20gU3RhcmJ1cnN0IEVudGVycHJpc2UKICAgICAgICAjaW8udHJpbm89REVCVUcKICAgICAgICAjY29tLnN0YXJidXJzdGRhdGEucHJlc3RvPURFQlVHCiAgICAgIG5vZGUucHJvcGVydGllczogfAogICAgICAgIG5vZGUuZW52aXJvbm1lbnQ9ZGV2CiAgICAgICAgbm9kZS5kYXRhLWRpcj0vZGF0YS9zdGFyYnVyc3QKICAgICAgICBwbHVnaW4uZGlyPS91c3IvbGliL3N0YXJidXJzdC9wbHVnaW4KICAgICAgICBub2RlLnNlcnZlci1sb2ctZmlsZT0vdmFyL2xvZy9zdGFyYnVyc3Qvc2VydmVyLmxvZwogICAgICAgIG5vZGUubGF1bmNoZXItbG9nLWZpbGU9L3Zhci9sb2cvc3RhcmJ1cnN0L2xhdW5jaGVyLmxvZwogIGhlYXBIZWFkcm9vbVBlcmNlbnRhZ2U6IDMwCiAgaGVhcFNpemVQZXJjZW50YWdlOiA5MAogIGluaXRDb250YWluZXJzOiBbXQogIGtlZGFTY2FsZXI6CiAgICBlbmFibGVkOiBmYWxzZQogICAgaW1hZ2U6CiAgICAgIHB1bGxQb2xpY3k6IElmTm90UHJlc2VudAogICAgICByZXBvc2l0b3J5OiBoYXJib3Iuc3RhcmJ1cnN0ZGF0YS5uZXQvc3RhcmJ1cnN0ZGF0YS9rZWRhLXRyaW5vLXNjYWxlcgogICAgICB0YWc6IDAuMS4xNwogICAgcG9ydDogODAyMQogICAgcG9ydE5hbWU6IGdycGMKICAgIHNjYWxlZE9iamVjdFNwZWM6CiAgICAgIGFkdmFuY2VkOiB7fQogICAgICBjb29sZG93blBlcmlvZDogMzAwCiAgICAgIGlkbGVSZXBsaWNhQ291bnQ6IDAKICAgICAgbWF4UmVwbGljYUNvdW50OiAxMDAKICAgICAgbWluUmVwbGljYUNvdW50OiAxCiAgICAgIHBvbGxpbmdJbnRlcnZhbDogMzAKICAgICAgc2NhbGVUYXJnZXRSZWY6CiAgICAgICAgbmFtZTogd29ya2VyCiAgICAgIHRyaWdnZXJzOgogICAgICAtIG1ldGFkYXRhOgogICAgICAgICAgbnVtYmVyT2ZRdWVyaWVzUGVyV29ya2VyOiAiMTAiCiAgICAgICAgICBzY2FsZUluVG9JZGxlUmVwbGljYUNvdW50SWZOb1F1ZXVlZFF1ZXJpZXNMZWZ0OiAidHJ1ZSIKICAgICAgICAgIHNjYWxlTWV0aG9kOiBxdWVyeV9xdWV1ZQogICAgICAgIHR5cGU6IGV4dGVybmFsCiAgbm9kZU1lbW9yeUhlYWRyb29tOiAyNTZNaQogIG5vZGVTZWxlY3Rvcjoge30KICBwb2RBbm5vdGF0aW9uczoge30KICBwcmlvcml0eUNsYXNzTmFtZTogbnVsbAogIHJlcGxpY2FzOiAyCiAgcmVzb3VyY2VzOgogICAgY3B1OiAxNgogICAgbGltaXRzOgogICAgICBjcHU6ICIxIgogICAgICBtZW1vcnk6IDJHaQogICAgbWVtb3J5OiAxMDBHaQogICAgcmVxdWVzdHM6CiAgICAgIGNwdTogIjAuNSIKICAgICAgbWVtb3J5OiAxR2kKICBzZWN1cml0eUNvbnRleHQ6IHt9CiAgc2lkZWNhcnM6IFtdCiAgc3RhcmJ1cnN0V29ya2VyU2h1dGRvd25HcmFjZVBlcmlvZFNlY29uZHM6IDEKICB0b2xlcmF0aW9uczogW10=
+
+---
+# Source: starburst-enterprise/templates/workers/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  labels:
+    role: worker
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: worker
+      app: starburst-enterprise
+      helm-release: sep
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        role: worker
+        app: starburst-enterprise
+        helm-release: sep
+        helm-chart: starburst-enterprise-453.4.0
+        managed-by: Helm
+      annotations:
+        
+        checksum/worker-values: 0fa852a95ad70a20f4c23e5bff8981a7bbc09ced7b57062ad51b73cbb6c8744c
+        checksum/pullsecret: 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+    spec:
+      terminationGracePeriodSeconds: 1
+      imagePullSecrets:
+        - name: registry-credentials
+      hostAliases:
+        null
+      initContainers:
+        - name: starburst-enterprise-init
+          image: "harbor.starburstdata.net/starburstdata/starburst-enterprise-init:1.5.14"
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 0.5
+            limits:
+              memory: 2Gi
+              cpu: 1
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          volumeMounts:
+            - name: starburst-config
+              mountPath: /work-dir
+            - name: starburst-config-updated
+              mountPath: /etc/starburst
+            - name: starburst-license-json
+              mountPath: /starburst-license-json
+          command:
+            - starburst-conf-cli
+            - generate
+            - --values-yaml
+            - /work-dir/values.yaml
+            - --config-type
+            - WORKER
+            - --starburst-config-dir
+            - /etc/starburst
+            - --starburst-license-dir
+            - /starburst-license-json
+            - --ip
+            - $(POD_IP)
+            - --k8s-namespace
+            - $(POD_NAMESPACE)
+            - --chart-version
+            - 453.4.0
+      containers:
+        - name: worker
+          image: "harbor.starburstdata.net/starburstdata/starburst-enterprise:453-e.4"
+          imagePullPolicy: IfNotPresent
+          command: [ "/bin/bash" ]
+          args:
+            - "/initFile"
+            - "worker"
+          startupProbe:
+            httpGet:
+              scheme: HTTP
+              path: /v1/readiness
+              port: 8080
+            timeoutSeconds: 30
+            periodSeconds: 30
+            failureThreshold: 20
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /v1/readiness
+              port: 8080
+            timeoutSeconds: 30
+            periodSeconds: 30
+            failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /v1/info
+              port: 8080
+            timeoutSeconds: 30
+            periodSeconds: 60
+            failureThreshold: 3
+          envFrom:
+            - secretRef:
+                name: sep-secrets
+            
+            
+          env:
+            - name: POD_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443
+          volumeMounts:
+            - name: init-file
+              mountPath: /initFile
+              subPath: initFile
+              readOnly: true
+            - name: starburst-config-updated
+              mountPath: /etc/starburst
+            - name: starburst-license-json
+              mountPath: /starburst-license-json
+            
+            
+            - name: prometheus-volume
+              mountPath: /etc/starburst/telemetry
+            
+            - name: additional-volume-0
+              mountPath: /etc/starburst/groups.txt
+              subPath: groups.txt
+            - name: additional-volume-1
+              mountPath: /mnt/shared
+            - name: additional-volume-2
+              mountPath: /mnt/shared/fetch-certs.sh
+              subPath: fetch-certs.sh
+            - name: additional-volume-3
+              mountPath: 
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 0.5
+            limits:
+              memory: 2Gi
+              cpu: 1
+          terminationMessagePolicy: FallbackToLogsOnError
+      volumes:
+        - name: init-file
+          secret:
+            secretName: init-secret-sep-starburst-enterprise
+        - name: starburst-config
+          secret:
+            secretName: values-yaml-secret
+        - name: starburst-license-json
+          secret:
+            secretName: sep-license
+        - name: starburst-config-updated
+          emptyDir: {}
+        
+        
+        - name: prometheus-volume
+          configMap:
+            name: starburst-worker-p8s
+        
+        - name: additional-volume-0
+          configMap:
+            name: sep-groups
+        - name: additional-volume-1
+          emptyDir: {}
+        - name: additional-volume-2
+          configMap:
+            defaultMode: 511
+            name: fetch-certs
+        - name: additional-volume-3
+          null
+
+---
+# Source: starburst-enterprise/templates/expose/cluster-ip/service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: starburst
+  labels:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: coordinator
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: starburst-enterprise
+    helm-release: sep
+    helm-chart: starburst-enterprise-453.4.0
+    managed-by: Helm
+    role: coordinator
+
+---
+# Source: starburst-enterprise/templates/initfile/init-file-secret.yaml
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: init-secret-sep-starburst-enterprise
+stringData:
+  initFile: | 
+    #!/bin/bash
+    set -euxo pipefail
+    
+    # security override file for Aurora DH keys
+    cat <<EOF > /tmp/java.security.override
+    jdk.tls.disabledAlgorithms=SSLv3, TLSv1, TLSv1.1, RC4, DES, MD5withRSA, DH keySize < 1024, EC keySize <224, anon, NULL, include jdk.disabled.namedCurves
+    EOF
+    
+    if [ "${1:-}" == "coordinator" ]; then
+    fi
+    echo "Starting starburst"
+    exec /usr/lib/starburst/bin/run-starburst
+    
+
+---
+# Source: starburst-enterprise/templates/coordinator/prometheus-configmap.yaml
+
+
+# ------------------------------------------------------------------------------
+# Coordinator Prometheus
+# ------------------------------------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: starburst-coordinator-p8s
+  labels:
+    name: starburst-coordinator-p8s
+data:
+  prometheus.yaml: |
+    rules:
+      - attrNameSnakeCase: true
+        name: $1
+        pattern: trino.execution<name=QueryManager><>(running_queries|queued_queries)
+        type: GAUGE
+      - name: failed_queries
+        pattern: trino.execution<name=QueryManager><>FailedQueries\.TotalCount
+        type: COUNTER
+Error: YAML parse error on starburst-enterprise/templates/coordinator/deployment.yaml: error converting YAML to JSON: yaml: line 223: could not find expected ':'

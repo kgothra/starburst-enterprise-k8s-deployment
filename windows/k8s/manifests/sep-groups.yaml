@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sep-groups
+data:
+  groups.txt: |
+    admin:platform_admin,admin
+    marketing:jeff,julian,joe
+    finance:jeff,luke,aaron

@@ -1,0 +1,12 @@
+# luke, example.com
+dn: uid=luke,dc=example,dc=com
+changetype: add
+uid: luke
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: luke
+sn: luke
+mail: luke@example.com
+userPassword: trinoRocks15

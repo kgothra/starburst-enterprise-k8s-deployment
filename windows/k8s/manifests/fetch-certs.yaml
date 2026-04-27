@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fetch-certs
+data:
+  fetch-certs.sh: |-
+    #!/usr/bin/env bash
+
+    set -euxo pipefail
+
+    yum -y update
+    yum -y install openssl java
+
+    echo "Generating Web Server Private Key..."
+    keytool -genkeypair -alias starburst -keyalg RSA -keystore /etc/starburst/certs/keystore.jks -keypass "${KEYSTORE_PSWD}" -storepass "${KEYSTORE_PSWD}" -dname "CN=localhost" -validity 365
+
+
+    echo "Fetching public certificate from OpenLDAP..."
+    # Use network to grab live OpenLDAP certificate is using
+    openssl s_client -connect host.docker.internal:636 -showcerts </dev/null 2>/dev/null | openssl x509 -outform PEM> /tmp/ldap.crt
+
+    echo "Building Java Truststore..."
+    # Bundles cert into keystore for Starburst
+    keytool -import -alias ldap -file /tmp/ldap.crt -keystore /etc/starburst/certs/keystore.jks -storepass "${KEYSTORE_PSWD}" -noprompt
+
+    echo "Truststore built and placed successfully!"

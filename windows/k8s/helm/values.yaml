@@ -1,0 +1,172 @@
+# -------------------------------
+# General
+# -------------------------------
+imagePullSecrets:
+  - name: registry-credentials
+
+# image:
+#   pullPolicy: IfNotPresent
+#   repository: harbor.starburstdata.net/starburstdata/starburst-enterprise
+#   tag: 453-e.4
+# imagePullSecrets: null
+# initFile: ""
+# initImage:
+#   pullPolicy: IfNotPresent
+#   repository: harbor.starburstdata.net/starburstdata/starburst-enterprise-init
+#   tag: 1.5.14
+  
+starburstPlatformLicense: sep-license
+environment: dev
+sharedSecret: abcdefg
+
+additionalVolumes:
+  - path: /etc/starburst/groups.txt
+    subPath: groups.txt
+    volume:
+      configMap:
+        name: sep-groups
+  - path: /mnt/shared
+    volume:
+      emptyDir: {}
+  - path: /etc/starburst/certs
+    volume:
+      emptyDir: {}
+  - path: /mnt/shared/fetch-certs.sh
+    subPath: fetch-certs.sh
+    volume:
+      configMap:
+        name: fetch-certs
+        defaultMode: 0777
+
+initFile: |
+  #!/bin/bash
+  set -euxo pipefail
+
+  # security override file for Aurora DH keys
+  cat <<EOF > /tmp/java.security.override
+  jdk.tls.disabledAlgorithms=SSLv3, TLSv1, TLSv1.1, RC4, DES, MD5withRSA, DH keySize < 1024, EC keySize <224, anon, NULL, include jdk.disabled.namedCurves
+  EOF
+
+  echo "Starting starburst"
+  exec /usr/lib/starburst/bin/run-starburst
+
+catalogs:
+  insights: |-
+    connector.name=postgresql
+    connection-url=jdbc:postgresql://host.docker.internal:5432/insights
+    connection-user=${ENV:INSIGHTS_USR}
+    connection-password=${ENV:INSIGHTS_PSWD}
+
+# -------------------------------
+# Coordinator
+# -------------------------------
+coordinator:
+  nodeMemoryHeadroom: "256Mi"
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "0.5"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+  # Added truststore volume and init container to coordinator for LDAP SSL handshake
+  # This init container fetches the OpenLDAP certificate, creates a Java truststore, and places it in a shared volume for the coordinator to use. This ensures secure LDAP communication without manual certificate management.
+  initContainers:
+    - name: cert-manager
+      image: quay.io/centos/centos:stream9
+      command: 
+        - bash 
+        - -c 
+        - /mnt/shared/fetch-certs.sh
+      env:
+        - name: KEYSTORE_PSWD
+          valueFrom:
+            secretKeyRef:
+              name: sep-secrets
+              key: KEYSTORE_PSWD
+  envFrom:
+    - secretRef:
+        name: "sep-secrets"
+
+  etcFiles:
+    properties:
+      config.properties: |-
+        coordinator=true
+        node-scheduler.include-coordinator=false
+        http-server.http.port=8080
+        discovery.uri=http://localhost:8080
+        discovery-server.enabled=true
+
+        # TLS/Authentication
+        http-server.authentication.type=PASSWORD
+        http-server.https.enabled=true
+        http-server.https.port=8443
+        http-server.https.keystore.path=/etc/starburst/certs/keystore.jks
+        http-server.https.keystore.key=${ENV:KEYSTORE_PSWD}
+
+        # Access control
+        starburst.access-control.enabled=true
+        access-control.config-files=/etc/starburst/guard.properties
+        starburst.access-control.authorized-groups=admin
+
+        # Insights
+        insights.persistence-enabled=true
+        insights.metrics-persistence-enabled=true
+        insights.jdbc.url=jdbc:postgresql://insightsdb:5432/insights
+        insights.jdbc.user=${ENV:INSIGHTS_USR}
+        insights.jdbc.password=${ENV:INSIGHTS_PSWD}
+# LDAP truststore path added for automation
+      password-authenticator.properties: |-
+        password-authenticator.name=ldap
+        ldap.url=ldaps://host.docker.internal:636
+        ldap.allow-insecure=false
+        ldap.user-bind-pattern=uid=${USER},dc=example,dc=com
+        ldap.ssl.truststore.path=/etc/starburst/certs/keystore.jks
+        ldap.ssl.truststore.password=${ENV:KEYSTORE_PSWD}
+  # Additional security added for user access control
+      guard.properties: |-
+        access-control.name=starburst
+        group=admin
+        catalog=.*
+        privileges=ALL
+
+        group=analytics
+        catalog=insights
+        privileges=SELECT
+
+      group-provider.properties: |-
+        group-provider.name=file
+        file.group-file=/etc/starburst/groups.txt
+
+      groups.txt: |-
+        admin:admin
+        platform_admin:admin
+        aaron:analytics
+        jeff:analytics
+        joe:analytics
+        julian:analytics
+        luke:analytics
+
+      log.properties: |-
+        io.trino=INFO
+        io.trino.plugin.password.ldap=DEBUG
+        io.trino.server.security=DEBUG
+
+# -------------------------------
+# Worker
+# -------------------------------
+worker:
+  nodeMemoryHeadroom: "256Mi"
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "0.5"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+  envFrom:
+    - secretRef:
+        name: sep-secrets
+
+  deploymentTerminationGracePeriodSeconds: 1 # dev only
+  starburstWorkerShutdownGracePeriodSeconds: 1 # dev only

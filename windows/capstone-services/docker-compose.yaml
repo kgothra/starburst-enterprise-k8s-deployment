@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+
+  insightsdb:
+    image: "postgres"
+    container_name: "insightsdb"
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "trinoRocks15"
+      POSTGRES_DB: "insights"
+    ports:
+      - "5432:5432"
+    command: ["postgres", "-c", "log_statement=all"]
+
+  openldap:
+    image: "osixia/openldap:1.5.0"
+    container_name: "openldap"
+    hostname: "openldap.example.com"
+    environment:
+      LDAP_ORGANISATION: "Example Inc."
+      LDAP_DOMAIN: "example.com"
+      LDAP_ADMIN_PASSWORD: "trinoRocks15"
+      LDAP_TLS: "true"
+      LDAP_TLS_VERIFY_CLIENT: "try"
+      LDAPTLS_REQCERT: "never"
+    volumes:
+      - "./ldap/:/container/service/slapd/assets/config/bootstrap/ldif/custom"
+      - "./certs/:/container/service/slapd/assets/certs"
+    ports:
+      - "636:636"
+    command: ["--copy-service"]

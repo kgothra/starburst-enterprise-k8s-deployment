@@ -1,0 +1,16 @@
+# Starburst license file
+starburstdata.license
+
+# Private keys
+capstone-services/certs/ldap.key
+
+# Starburst proprietary case materials
+STARBURST-ServicesCapstoneDescription.pdf
+ServicesCapstoneCaseScriptmodifieed.pdf
+
+# Duplicate of notes.md
+notes
+
+# macOS metadata
+.DS_Store
+**/.DS_Store

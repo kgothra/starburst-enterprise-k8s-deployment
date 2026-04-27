@@ -1,0 +1,189 @@
+# -------------------------------
+# General
+# -------------------------------
+
+imagePullSecrets:
+  - name: registry-credentials
+
+# image:
+#   pullPolicy: IfNotPresent
+#   repository: harbor.starburstdata.net/starburstdata/starburst-enterprise
+#   tag: 453-e.4
+# imagePullSecrets: null
+# initFile: ""
+# initImage:
+#   pullPolicy: IfNotPresent
+#   repository: harbor.starburstdata.net/starburstdata/starburst-enterprise-init
+#   tag: 1.5.14
+
+starburstPlatformLicense: sep-license
+environment: dev
+sharedSecret: abcdefg
+starburstPlatform:
+  autoConfig:
+    enabled: false
+additionalVolumes:
+  - path: /etc/starburst/groups.txt
+    subPath: groups.txt
+    volume:
+      configMap:
+        name: sep-groups
+  - path: /mnt/shared
+    volume:
+      emptyDir: {}
+  - path: /mnt/shared/fetch-certs.sh
+    subPath: fetch-certs.sh
+    volume:
+      configMap:
+        name: fetch-certs
+        defaultMode: 0777
+
+initFile: |
+  #!/bin/bash
+  set -euxo pipefail
+
+  if [ "${1:-}" == "coordinator" ]; then
+
+      mkdir -p /etc/starburst/certs/
+
+      echo "Placing certificates..."
+      cp /mnt/shared/keystore.jks /etc/starburst/certs/
+
+  fi
+  echo "Starting starburst"
+  exec /usr/lib/starburst/bin/run-starburst
+
+catalogs:
+  insights: |-
+    connector.name=postgresql
+    connection-url=jdbc:postgresql://insightsdb:5432/insights
+    connection-user=${ENV:INSIGHTS_USR}
+    connection-password=${ENV:INSIGHTS_PSWD}
+
+expose:
+  type: clusterIP
+# -------------------------------
+# Coordinator
+# -------------------------------
+coordinator:
+  autoConfig: false
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "0.5"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+  jvm:
+    maxHeapSizePercentage: 80.0
+    heapHeadroomPercentage: 0
+    config:
+      - "-server"
+      - "-Xms1G"
+      - "-Xmx1G"
+  additionalProperties:
+    memory.heap-headroom-per-node: 512MB
+    query.max-memory-per-node: 512MB
+  env:
+    - name: JVM_MAX_HEAP
+      value: "1G"
+  initContainers:
+    #- name: starburst-enterprise-init
+      #resources:
+        #requests:
+          #cpu: "500m"
+          #memory: "512Mi"
+        #limits:
+          #cpu: "1"
+          #memory: "1Gi"
+    - name: cert-manager
+      image: quay.io/centos/centos:stream9
+      env:
+        - name: LDAP_HOST
+          value: "openldap.example.com"
+        - name: LDAP_PORT
+          value: "636"
+        - name: LDAP_CERT
+          value: "/mnt/shared/ldapserver.crt"
+      command: ["bash", "-c", "/mnt/shared/fetch-certs.sh"]
+
+  envFrom:
+    - secretRef:
+        name: sep-secrets
+
+  etcFiles:
+    properties:
+      config.properties: |-
+        coordinator=true
+        node-scheduler.include-coordinator=false
+        http-server.http.port=8080
+        discovery.uri=http://localhost:8080
+        discovery-server.enabled=true
+
+        # TLS/Authentication
+        # http-server.authentication.type=PASSWORD
+        http-server.https.enabled=true
+        http-server.https.port=8443
+        http-server.https.keystore.path=/etc/starburst/certs/keystore.jks
+        http-server.https.keystore.key=${ENV:KEYSTORE_PSWD}
+
+        # Access control
+        starburst.access-control.enabled=true
+        access-control.config-files=/etc/starburst/guard.properties
+        starburst.access-control.authorized-groups=admin
+
+        # Insights
+        insights.persistence-enabled=true
+        insights.metrics-persistence-enabled=true
+        insights.jdbc.url=jdbc:postgresql://insightsdb:5432/insights
+        insights.jdbc.user=${ENV:INSIGHTS_USR}
+        insights.jdbc.password=${ENV:INSIGHTS_PSWD}
+
+      guard.properties: |-
+        access-control.name=starburst
+
+      group-provider.properties: |-
+        group-provider.name=file
+        file.group-file=/etc/starburst/groups.txt
+
+      log.properties: |-
+        io.trino=INFO
+
+# -------------------------------
+# Worker
+# -------------------------------
+worker:
+  autoConfig: false
+  replicas: 1
+  count: 1
+  jvm:
+    maxHeapSizePercentage: 80.0
+    heapHeadroomPercentage: 0
+    config:
+      - "-server"
+      - "-Xms1G"
+      - "-Xmx1G"
+  env:
+    - name: JVM_MAX_HEAP
+      value: "1G"
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "0.5"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+
+  envFrom:
+    - secretRef:
+        name: sep-secrets
+
+  deploymentTerminationGracePeriodSeconds: 1 # dev only
+  starburstWorkerShutdownGracePeriodSeconds: 1 # dev only
+
+  starburstWorker:
+    autoConfig:
+      enabled: false
+  starburstCoordinator:
+    autoConfig:
+      enabled: false
